@@ -13,13 +13,27 @@ public class PasswordStrengthMeter {
         if (s.length() < 8) {
             return PasswordStrength.NORMAL;
         }
-        boolean containsNum = meetContainingNumberCriteria(s);
-
-        if (!containsNum) {
+        boolean containsNumber = meetContainingNumberCriteria(s);
+        if (!containsNumber) {
             return PasswordStrength.NORMAL;
         }
+
+        boolean containsUpperCase = meetContainingUpperCaseCriteria(s);
+        if (!containsUpperCase) {
+            return PasswordStrength.NORMAL;
+        }
+
         return PasswordStrength.STRONG;
 
+    }
+
+    private boolean meetContainingUpperCaseCriteria(String s) {
+        for (char ch : s.toCharArray()) {
+            if (Character.isUpperCase(ch)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean meetContainingNumberCriteria(String s) {
