@@ -10,15 +10,22 @@ public class PasswordStrengthMeter {
             return PasswordStrength.INVALID;
         }
 
-        if (s.length() < 8) {
+        boolean lengthEnough = s.length() >= 8;
+        boolean containsNumber = meetContainingNumberCriteria(s);
+        boolean containsUpperCase = meetContainingUpperCaseCriteria(s);
+
+        if (lengthEnough && !containsNumber && !containsUpperCase) {
+            return PasswordStrength.WEAK;
+        }
+
+        if (!lengthEnough) {
             return PasswordStrength.NORMAL;
         }
-        boolean containsNumber = meetContainingNumberCriteria(s);
+
         if (!containsNumber) {
             return PasswordStrength.NORMAL;
         }
 
-        boolean containsUpperCase = meetContainingUpperCaseCriteria(s);
         if (!containsUpperCase) {
             return PasswordStrength.NORMAL;
         }
