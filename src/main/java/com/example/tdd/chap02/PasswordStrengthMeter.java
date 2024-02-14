@@ -1,8 +1,15 @@
 package com.example.tdd.chap02;
 
+import org.springframework.util.StringUtils;
+
 public class PasswordStrengthMeter {
 
     public PasswordStrength meter(String s) {
+
+        if (!StringUtils.hasText(s)) {
+            return PasswordStrength.INVALID;
+        }
+
         if (s.length() < 8) {
             return PasswordStrength.NORMAL;
         }
