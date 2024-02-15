@@ -10,6 +10,17 @@ public class PasswordStrengthMeter {
             return PasswordStrength.INVALID;
         }
 
+        int meetCount = getMeetCriteriaCounts(s);
+
+        return switch (meetCount) {
+            case 2 -> PasswordStrength.NORMAL;
+            case 3 -> PasswordStrength.STRONG;
+            default -> PasswordStrength.WEAK;
+        };
+
+    }
+
+    private int getMeetCriteriaCounts(String s) {
         int meetCount = 0;
         if (s.length() >= 8) {
             meetCount++;
@@ -20,14 +31,7 @@ public class PasswordStrengthMeter {
         if (meetContainingUpperCaseCriteria(s)) {
             meetCount++;
         }
-
-        return switch (meetCount) {
-            case 1 -> PasswordStrength.WEAK;
-            case 2 -> PasswordStrength.NORMAL;
-            case 3 -> PasswordStrength.STRONG;
-            default -> PasswordStrength.INVALID;
-        };
-
+        return meetCount;
     }
 
     private boolean meetContainingUpperCaseCriteria(String s) {
