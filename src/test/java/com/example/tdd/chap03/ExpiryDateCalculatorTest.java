@@ -9,18 +9,14 @@ public class ExpiryDateCalculatorTest {
 
     @Test
     void 만원_납부_한달_뒤_만료() {
+        assetExpiryDate(LocalDate.of(2019, 3, 1), 10000, LocalDate.of(2019, 4, 1));
+        assetExpiryDate(LocalDate.of(2019, 5, 5), 10000, LocalDate.of(2019, 6, 5));
+    }
+
+    private void assetExpiryDate(LocalDate billingDate, int payAmount, LocalDate expectedDate) {
         ExpiryDateCalculator calculator = new ExpiryDateCalculator();
-
-        LocalDate billingDate = LocalDate.of(2019, 3, 1);
-        int payAmount = 10000;
-        LocalDate expiryDate = calculator.calculateExpiryDate(billingDate, payAmount);
-
-        LocalDate billingDate2 = LocalDate.of(2019, 5, 5);
-        int payAmount2 = 10000;
-        LocalDate expiryDate2 = calculator.calculateExpiryDate(billingDate2, payAmount2);
-
-        assertEquals(LocalDate.of(2019, 4, 1), expiryDate);
-        assertEquals(LocalDate.of(2019, 6, 5), expiryDate2);
+        LocalDate actualExpiryDate = calculator.calculateExpiryDate(billingDate, payAmount);
+        assertEquals(expectedDate, actualExpiryDate);
     }
 
 }
