@@ -66,6 +66,18 @@ public class ExpiryDateCalculatorTest {
         );
     }
 
+    @Test
+    void 이만원_이상_납부하면_비례해서_만료일_계산() {
+        assetExpiryDate(PayData.builder()
+            .billingDate(LocalDate.of(2019, 3, 1))
+            .payAmount(20000)
+            .build(), LocalDate.of(2019, 5, 1));
+        assetExpiryDate(PayData.builder()
+            .billingDate(LocalDate.of(2019, 3, 1))
+            .payAmount(30000)
+            .build(), LocalDate.of(2019, 6, 1));
+    }
+
     private void assetExpiryDate(PayData payData, LocalDate expectedDate) {
         ExpiryDateCalculator calculator = new ExpiryDateCalculator();
         LocalDate actualExpiryDate = calculator.calculateExpiryDate(payData);
