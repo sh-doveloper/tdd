@@ -6,12 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+
 @Builder
 @Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PayData {
 
     private LocalDate billingDate;
     private int payAmount;
+    private LocalDate firstBillingDate;
 
 }
+
+
