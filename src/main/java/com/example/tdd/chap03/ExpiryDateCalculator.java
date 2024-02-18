@@ -19,8 +19,9 @@ public class ExpiryDateCalculator {
         final var dayOfFirstBillingDate = payData.getFirstBillingDate().getDayOfMonth();
         if (!isSameLastDayOfMonth(dayOfFirstBillingDate, cadidateDate.getDayOfMonth())) {
             final var lastDayOfCandidateMonth = YearMonth.from(cadidateDate).lengthOfMonth();
-            return cadidateDate.withDayOfMonth(getLastDayOfMonth(lastDayOfCandidateMonth,
-                dayOfFirstBillingDate));
+            final var lastDayOfMonth = getLastDayOfMonth(lastDayOfCandidateMonth,
+                dayOfFirstBillingDate);
+            return cadidateDate.withDayOfMonth(lastDayOfMonth);
         } else {
             return cadidateDate;
         }
