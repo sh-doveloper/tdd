@@ -98,4 +98,20 @@ public class ExpiryDateCalculatorTest {
         assertEquals(expectedDate, actualExpiryDate);
     }
 
+    @Test
+    void 십만원을_납부하면_1년_제공() {
+        assetExpiryDate(
+            PayData.builder()
+                .billingDate(LocalDate.of(2019, 1, 28))
+                .payAmount(100000)
+                .build()
+            , LocalDate.of(2020, 1, 28));
+        assetExpiryDate(
+            PayData.builder()
+                .billingDate(LocalDate.of(2020, 2, 29))
+                .payAmount(100000)
+                .build()
+            , LocalDate.of(2021, 2, 28));
+    }
+
 }
