@@ -114,4 +114,26 @@ public class ExpiryDateCalculatorTest {
             , LocalDate.of(2021, 2, 28));
     }
 
+    @Test
+    void 십만원_초과금액을_납부하면_연간금액_계산후_남은_개월수_추가() {
+        assetExpiryDate(
+            PayData.builder()
+                .billingDate(LocalDate.of(2019, 1, 28))
+                .payAmount(130000)
+                .build()
+            , LocalDate.of(2020, 4, 28));
+        assetExpiryDate(
+            PayData.builder()
+                .billingDate(LocalDate.of(2020, 2, 29))
+                .payAmount(200000)
+                .build()
+            , LocalDate.of(2022, 2, 28));
+        assetExpiryDate(
+            PayData.builder()
+                .billingDate(LocalDate.of(2020, 2, 29))
+                .payAmount(210000)
+                .build()
+            , LocalDate.of(2022, 3, 29));
+    }
+
 }
