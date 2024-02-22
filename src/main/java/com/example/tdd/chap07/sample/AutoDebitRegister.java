@@ -1,4 +1,4 @@
-package com.example.tdd.chap07;
+package com.example.tdd.chap07.sample;
 
 import java.time.LocalDate;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.example.tdd.chap07;
+package com.example.tdd.chap07.sample;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

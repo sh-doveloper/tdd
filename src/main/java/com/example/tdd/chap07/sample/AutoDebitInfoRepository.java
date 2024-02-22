@@ -1,4 +1,4 @@
-package com.example.tdd.chap07;
+package com.example.tdd.chap07.sample;
 
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.example.tdd.chap07;
+package com.example.tdd.chap07.sample;
 
 import lombok.Setter;
 import org.springframework.util.StringUtils;
