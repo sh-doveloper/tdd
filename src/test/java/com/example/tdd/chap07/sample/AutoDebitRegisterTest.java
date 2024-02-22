@@ -1,8 +1,5 @@
-package com.example.tdd.chap07;
+package com.example.tdd.chap07.sample;
 
-import com.example.tdd.chap07.sample.AutoDebitInfoRepository;
-import com.example.tdd.chap07.sample.AutoDebitRegister;
-import com.example.tdd.chap07.sample.StubCardNumberValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
